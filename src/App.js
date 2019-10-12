@@ -1,9 +1,9 @@
 import React from 'react';
-import Board from './components/Board';
+import Grid from './components/Grid';
 
 function App() {
   return (
-    <Board />
+    <Grid />
   );
 }
 
