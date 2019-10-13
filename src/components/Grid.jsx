@@ -10,13 +10,13 @@ class Grid extends React.Component {
   render() {
     return (
       <div>
-        <GridColumn col={1} makeMove={this.props.makeMove} />
-        <GridColumn col={2} makeMove={this.props.makeMove} />
-        <GridColumn col={3} makeMove={this.props.makeMove} />
-        <GridColumn col={4} makeMove={this.props.makeMove} />
-        <GridColumn col={5} makeMove={this.props.makeMove} />
-        <GridColumn col={6} makeMove={this.props.makeMove} />
-        <GridColumn col={7} makeMove={this.props.makeMove} />
+        <GridColumn col={1} state={this.props.state} makeMove={this.props.makeMove} />
+        <GridColumn col={2} state={this.props.state} makeMove={this.props.makeMove} />
+        <GridColumn col={3} state={this.props.state} makeMove={this.props.makeMove} />
+        <GridColumn col={4} state={this.props.state} makeMove={this.props.makeMove} />
+        <GridColumn col={5} state={this.props.state} makeMove={this.props.makeMove} />
+        <GridColumn col={6} state={this.props.state} makeMove={this.props.makeMove} />
+        <GridColumn col={7} state={this.props.state} makeMove={this.props.makeMove} />
       </div>
     )
   }
