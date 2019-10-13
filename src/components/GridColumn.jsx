@@ -5,21 +5,44 @@ class GridColumn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {}
+    this.createCells = this.createCells.bind(this);
+  }
+
+  componentDidMount() {
+    this.createCells();
+  }
+
+  createCells() {
+    let cellIds = [];
+    for (let i = 6; i > -1; i--) {
+      cellIds.push(i);
+    }
+    this.setState({cellIds})
   }
 
   render() {
+    if (!this.state.cellIds) {
+      return (
+        <div>loading...</div>
+      )
+    }
     return (
       <div className='gridCol'>
-        <GridCell cell={7} col={this.props.col} state={this.props.state} makeMove={this.props.makeMove} />
-        <GridCell cell={6} col={this.props.col} state={this.props.state} makeMove={this.props.makeMove} />
-        <GridCell cell={5} col={this.props.col} state={this.props.state} makeMove={this.props.makeMove} />
-        <GridCell cell={4} col={this.props.col} state={this.props.state} makeMove={this.props.makeMove} />
-        <GridCell cell={3} col={this.props.col} state={this.props.state} makeMove={this.props.makeMove} />
-        <GridCell cell={2} col={this.props.col} state={this.props.state} makeMove={this.props.makeMove} />
-        <GridCell cell={1} col={this.props.col} state={this.props.state} makeMove={this.props.makeMove} />
+        {this.state.cellIds.map(cell => {
+          return <GridCell 
+            key={[this.props.colId, cell]}
+            cellId={cell} 
+            colId={this.props.colId} 
+            currentCell={this.props.currentCell} 
+            color={this.props.grid[this.props.colId][cell].color}
+            makeMove={this.props.makeMove} 
+            grid={this.props.grid}
+          />
+        })}
       </div>
-      )
+    )
   }
 }
 
 export default GridColumn;
+
