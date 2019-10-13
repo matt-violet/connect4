@@ -10,13 +10,13 @@ class GridColumn extends React.Component {
   render() {
     return (
       <div className='gridCol'>
-        <GridCell />
-        <GridCell />
-        <GridCell />
-        <GridCell />
-        <GridCell />
-        <GridCell />
-        <GridCell />
+        <GridCell cell={7} col={this.props.col} click={this.props.click} />
+        <GridCell cell={6} col={this.props.col} click={this.props.click} />
+        <GridCell cell={5} col={this.props.col} click={this.props.click} />
+        <GridCell cell={4} col={this.props.col} click={this.props.click} />
+        <GridCell cell={3} col={this.props.col} click={this.props.click} />
+        <GridCell cell={2} col={this.props.col} click={this.props.click} />
+        <GridCell cell={1} col={this.props.col} click={this.props.click} />
       </div>
       )
   }
