@@ -33,7 +33,6 @@ class GridColumn extends React.Component {
             key={[this.props.colId, cell]}
             cellId={cell} 
             colId={this.props.colId} 
-            currentCell={this.props.currentCell} 
             color={this.props.grid[this.props.colId][cell].color}
             makeMove={this.props.makeMove} 
             grid={this.props.grid}

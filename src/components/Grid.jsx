@@ -34,7 +34,6 @@ class Grid extends React.Component {
           return <GridColumn 
             colId={col} 
             key={col}
-            currentCell={this.props.currentCell} 
             makeMove={this.props.makeMove} 
             grid={this.props.grid}
           />

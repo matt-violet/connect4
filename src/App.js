@@ -33,19 +33,25 @@ class App extends React.Component {
 
   makeMove(e) {
     const clickedCellColor = e.target.value;
-    const clickedCellId = [parseInt(e.target.id[0], 10), parseInt(e.target.id[2], 10)];    
     const updatedGrid = this.state.grid.slice();
+    const currentCol = e.target.id[0];
+    let movePlacement;
 
     if (clickedCellColor !== 'noColor') {
       return;
     } else {
-      updatedGrid[clickedCellId[0]][clickedCellId[1]].color = this.state.redIsNext ? 'Red' : 'Yellow';
-     
+      for (let i = 6; i > -1; i--) {
+        if (updatedGrid[currentCol][i].color === 'noColor') {
+          movePlacement = updatedGrid[currentCol][i].cellId
+        }
+      }
+      updatedGrid[movePlacement[0]][movePlacement[1]].color = this.state.redIsNext ? 'Red' : 'Yellow';
+
       this.setState({
         redIsNext: !this.state.redIsNext,
         grid: updatedGrid,
         gameStarted: true,
-        currentCell: clickedCellId
+        movePlacement
       }) 
     }
   }
@@ -60,7 +66,6 @@ class App extends React.Component {
       <div className='grid'>
         <Grid 
           makeMove={this.makeMove} 
-          currentCell={this.state.currentCell} 
           grid={this.state.grid}
           gameStarted={this.state.gameStarted}
         />
