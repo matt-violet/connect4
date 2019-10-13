@@ -4,27 +4,19 @@ import GridColumn from './GridColumn';
 class Grid extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    }
-    this.click = this.click.bind(this);
-  }
-
-  click(e) {
-    e.preventDefault();
-    const coordinate = e.target.id;
-    this.props.makeMove(coordinate);
+    this.state = {}
   }
 
   render() {
     return (
       <div>
-        <GridColumn col={1} click={this.click} />
-        <GridColumn col={2} click={this.click} />
-        <GridColumn col={3} click={this.click} />
-        <GridColumn col={4} click={this.click} />
-        <GridColumn col={5} click={this.click} />
-        <GridColumn col={6} click={this.click} />
-        <GridColumn col={7} click={this.click} />
+        <GridColumn col={1} makeMove={this.props.makeMove} />
+        <GridColumn col={2} makeMove={this.props.makeMove} />
+        <GridColumn col={3} makeMove={this.props.makeMove} />
+        <GridColumn col={4} makeMove={this.props.makeMove} />
+        <GridColumn col={5} makeMove={this.props.makeMove} />
+        <GridColumn col={6} makeMove={this.props.makeMove} />
+        <GridColumn col={7} makeMove={this.props.makeMove} />
       </div>
     )
   }

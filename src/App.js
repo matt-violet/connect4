@@ -10,19 +10,18 @@ class App extends React.Component {
     this.makeMove = this.makeMove.bind(this);
   }
 
-  makeMove(coordinate) {
+  makeMove(e) {
     this.setState({
       redIsNext: !this.state.redIsNext
     })
+    const coordinate = e.target.id;
     console.log(coordinate)
   }
 
   render() {
     return (
       <div className='grid'>
-        <Grid 
-          makeMove={this.makeMove}
-        />
+        <Grid makeMove={this.makeMove} />
         <br/>
         Next move: {this.state.redIsNext ? 'red' : 'yellow'}
       </div>

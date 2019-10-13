@@ -15,7 +15,7 @@ class GridCell extends React.Component {
         <button 
           className='gridCell' 
           id={this.state.coordinates} 
-          onClick={this.props.click} 
+          onClick={this.props.makeMove} 
         />
       </div>
     )
