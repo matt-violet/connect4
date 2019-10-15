@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from './components/Grid';
 import WinnerScreen from './components/WinnerScreen';
+import { checkForWinner } from './solvers.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +12,6 @@ class App extends React.Component {
     }
     this.makeMove = this.makeMove.bind(this);
     this.createGrid = this.createGrid.bind(this);
-    this.checkForWinner = this.checkForWinner.bind(this);
   }
 
   componentDidMount() {
@@ -20,38 +20,11 @@ class App extends React.Component {
 
   componentDidUpdate() {
     if (this.state.movePlacement) {
-      this.checkForWinner();
-    }
-  }
-
-  checkForWinner() {
-    this.checkHorizontally();
-    // this.checkVertically(this.state.currentCell);
-    // this.checkDiagonally(this.state.currentCell);
-  }
-  
-  checkHorizontally() {
-    let grid = this.state.grid;
-    let matchesInARow = 1;
-    let currentCell = grid[this.state.movePlacement[0]][this.state.movePlacement[1]];
-
-    // check to the right
-    for (let i = 1; i < 4; i++) {
-      if (grid[this.state.movePlacement[0] + i]) {
-        if (currentCell.color === grid[this.state.movePlacement[0] + i][this.state.movePlacement[1]].color) {
-          matchesInARow++;
-        }
-      } 
-      // check to the left
-      if (grid[this.state.movePlacement[0] - i]) {
-        if (currentCell.color === grid[this.state.movePlacement[0] - i][this.state.movePlacement[1]].color) {
-          matchesInARow++;
-        }
-      }
-    }
-    if (matchesInARow === 4) {
-      let message = this.state.redIsNext ? 'Yellow wins!!!' : 'Red wins!!!';
-      alert(message);
+      let grid = this.state.grid;
+      let movePlacement = this.state.movePlacement;
+      let currentCell = grid[movePlacement[0]][movePlacement[1]];
+      let redIsNext = this.state.redIsNext;
+      checkForWinner(grid, currentCell, movePlacement, redIsNext);
     }
   }
 
