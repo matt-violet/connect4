@@ -9,6 +9,10 @@ class GridCell extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    this.props.callCheckForWinner();
+  }
+
   render() {
     return (
       <div>

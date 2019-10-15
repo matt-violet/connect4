@@ -4,7 +4,9 @@ import GridCell from './GridCell';
 class GridColumn extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      cellIds: []
+    }
     this.createCells = this.createCells.bind(this);
   }
 
@@ -23,7 +25,7 @@ class GridColumn extends React.Component {
   render() {
     if (!this.state.cellIds) {
       return (
-        <div>loading...</div>
+        <div>Loading...</div>
       )
     }
     return (
@@ -36,6 +38,7 @@ class GridColumn extends React.Component {
             color={this.props.grid[this.props.colId][cell].color}
             makeMove={this.props.makeMove} 
             grid={this.props.grid}
+            callCheckForWinner={this.props.callCheckForWinner}
           />
         })}
       </div>

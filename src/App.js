@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from './components/Grid';
-import WinnerScreen from './components/WinnerScreen';
 import { checkForWinner } from './solvers.js';
 
 class App extends React.Component {
@@ -12,20 +11,28 @@ class App extends React.Component {
     }
     this.makeMove = this.makeMove.bind(this);
     this.createGrid = this.createGrid.bind(this);
+    this.callCheckForWinner = this.callCheckForWinner.bind(this);
+    this.declareWinner = this.declareWinner.bind(this);
   }
 
   componentDidMount() {
     this.createGrid();
   }
 
-  componentDidUpdate() {
-    if (this.state.movePlacement) {
+  callCheckForWinner() {
+    if (this.state.movePlacement && !this.state.winner) {
       let grid = this.state.grid;
       let movePlacement = this.state.movePlacement;
       let currentCell = grid[movePlacement[0]][movePlacement[1]];
-      let redIsNext = this.state.redIsNext;
-      checkForWinner(grid, currentCell, movePlacement, redIsNext);
+      let declareWinner = this.declareWinner;
+      checkForWinner(grid, currentCell, movePlacement, declareWinner);
     }
+  }
+
+  declareWinner() {
+    this.setState({
+      winner: 'idklol'
+    })
   }
 
   createGrid() {
@@ -49,6 +56,9 @@ class App extends React.Component {
     const currentCol = e.target.id[0];
     let movePlacement;
 
+    if (this.state.winner) {
+      return;
+    }
     if (clickedCellColor !== 'noColor') {
       return;
     } else {
@@ -71,9 +81,16 @@ class App extends React.Component {
   render() {
     if (this.state.winner) {
       return (
-        <WinnerScreen 
-          player={this.state.redIsNext}
-        />
+          <div className='grid'>
+            <Grid 
+              makeMove={this.makeMove} 
+              grid={this.state.grid}
+              gameStarted={this.state.gameStarted}
+              callCheckForWinner={this.callCheckForWinner}
+              />
+            <br/>
+            <h1>{this.state.redIsNext ? 'Yellow wins!!!' : 'Red wins!!!'}</h1>
+          </div>
       )
     }
     if (!this.state.grid) {
@@ -87,6 +104,7 @@ class App extends React.Component {
           makeMove={this.makeMove} 
           grid={this.state.grid}
           gameStarted={this.state.gameStarted}
+          callCheckForWinner={this.callCheckForWinner}
         />
         <br/>
         Next move: {this.state.redIsNext ? 'red' : 'yellow'}

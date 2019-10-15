@@ -4,7 +4,9 @@ import GridColumn from './GridColumn';
 class Grid extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      columnIds: []
+    }
     this.createColumns = this.createColumns.bind(this);
   }
 
@@ -25,7 +27,7 @@ class Grid extends React.Component {
   render() {
     if (!this.state.columnIds) {
       return (
-        <div>loading...</div>
+        <div>Loading...</div>
       )
     }
     return (
@@ -36,6 +38,7 @@ class Grid extends React.Component {
             key={col}
             makeMove={this.props.makeMove} 
             grid={this.props.grid}
+            callCheckForWinner={this.props.callCheckForWinner}
           />
         })}
       </div>
