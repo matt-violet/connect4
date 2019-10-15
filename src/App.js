@@ -31,7 +31,7 @@ class App extends React.Component {
 
   declareWinner() {
     this.setState({
-      winner: 'idklol'
+      winner: true
     })
   }
 
