@@ -13,6 +13,7 @@ class App extends React.Component {
     this.createGrid = this.createGrid.bind(this);
     this.callCheckForWinner = this.callCheckForWinner.bind(this);
     this.declareWinner = this.declareWinner.bind(this);
+    this.startOver = this.startOver.bind(this);
   }
 
   componentDidMount() {
@@ -78,6 +79,10 @@ class App extends React.Component {
     }
   }
 
+  startOver() {
+    window.location.reload();
+  }
+
   render() {
     if (this.state.winner) {
       return (
@@ -90,6 +95,10 @@ class App extends React.Component {
               />
             <br/>
             <h1>{this.state.redIsNext ? 'Yellow wins!!!' : 'Red wins!!!'}</h1>
+            <br/>
+            <button onClick={this.startOver}>
+              Start Over
+            </button>
           </div>
       )
     }
