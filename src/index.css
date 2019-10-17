@@ -20,15 +20,16 @@ body {
 
 .gridCellnoColor {
   background-color: cornflowerblue; 
-  opacity: 0.75;
-  border: 1px solid black;
+  opacity: .85;
+  border: .5px solid black;
   width: 50px;
   height: 50px;
+  display: block;
 }
 
 .gridCellRed {
   background-color: red;
-  border: 1px solid black;
+  border: 2px solid black;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -36,8 +37,22 @@ body {
 
 .gridCellYellow {
   background-color: yellow;
-  border: 1px solid black;
+  border: 2px solid black;
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+/* ================== SLIDE ===================== */
+
+.gridCellRed, .gridCellYellow {
+  animation-duration: 1s;
+  animation-name: slidein;
+  animation-direction: alternate 
+}
+
+@keyframes slidein {
+  from { transform: translateY(-350px); }
+  to { transform: translateY(0px); 
+  }
 }
