@@ -11,7 +11,7 @@ class Grid extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.gameStarted) {
+    if (this.props.gameStarted) {
       this.createColumns();
     }
   }
@@ -41,6 +41,9 @@ class Grid extends React.Component {
             callCheckForWinner={this.props.callCheckForWinner}
           />
         })}
+        <br/>
+        <br/>
+        Next move: {this.props.redIsNext ? 'red' : 'yellow'}
       </div>
     )
   }

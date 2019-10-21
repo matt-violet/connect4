@@ -41,6 +41,10 @@ export function checkForWinner(grid, currentCell, movePlacement, declareWinner) 
       }
     }
   }
+  // console.log(horizontalStreak)
+  // console.log(verticalStreak)
+  // console.log(minorDiagonalStreak)
+  // console.log(majorDiagonalStreak)
   if (horizontalStreak === 4 || verticalStreak === 4 || minorDiagonalStreak === 4 || majorDiagonalStreak === 4) {
     declareWinner();
   }

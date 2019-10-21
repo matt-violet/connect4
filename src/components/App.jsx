@@ -1,22 +1,36 @@
 import React from 'react';
-import Grid from './components/Grid';
-import { checkForWinner } from './solvers.js';
+import Grid from './Grid';
+import { checkForWinner } from '../solvers.js';
+import WinningScreen from './WinningScreen';
+import SignInScreen from './SignInScreen';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      gameStarted: false,
       redIsNext: true,
-      gameStarted: false
+      redPlayer: null,
+      yellowPlayer: null
     }
     this.makeMove = this.makeMove.bind(this);
     this.createGrid = this.createGrid.bind(this);
     this.callCheckForWinner = this.callCheckForWinner.bind(this);
     this.declareWinner = this.declareWinner.bind(this);
     this.startOver = this.startOver.bind(this);
+    this.startGame = this.startGame.bind(this);
   }
 
   componentDidMount() {
+    this.createGrid();
+  }
+
+  startGame(redPlayer, yellowPlayer) {
+    this.setState({
+      gameStarted: true,
+      redPlayer,
+      yellowPlayer
+    })
     this.createGrid();
   }
 
@@ -73,7 +87,6 @@ class App extends React.Component {
       this.setState({
         redIsNext: !this.state.redIsNext,
         grid: updatedGrid,
-        gameStarted: true,
         movePlacement
       }) 
     }
@@ -86,25 +99,28 @@ class App extends React.Component {
   render() {
     if (this.state.winner) {
       return (
-          <div className='grid'>
-            <Grid 
-              makeMove={this.makeMove} 
-              grid={this.state.grid}
-              gameStarted={this.state.gameStarted}
-              callCheckForWinner={this.callCheckForWinner}
-              />
-            <br/>
-            <h1>{this.state.redIsNext ? 'Yellow wins!!!' : 'Red wins!!!'}</h1>
-            <br/>
-            <button onClick={this.startOver}>
-              Start Over
-            </button>
-          </div>
+        <WinningScreen 
+          makeMove={this.makeMove}
+          grid={this.state.grid}
+          gameStarted={this.state.gameStarted}
+          callCheckForWinner={this.state.callCheckForWinner}
+          startOver={this.startOver}
+          winner={this.state.winner}
+          redPlayer={this.state.redPlayer}
+          yellowPlayer={this.state.yellowPlayer}
+        />
+      )
+    }
+    if (!this.state.redPlayer && !this.state.yellowPlayer) {
+      return (
+        <SignInScreen 
+          startGame={this.startGame} 
+        />
       )
     }
     if (!this.state.grid) {
       return (
-        <div>loading...</div>
+        <div>Loading...</div>
       )
     }
     return (
@@ -114,11 +130,10 @@ class App extends React.Component {
           grid={this.state.grid}
           gameStarted={this.state.gameStarted}
           callCheckForWinner={this.callCheckForWinner}
+          redIsNext={this.state.redIsNext}
         />
-        <br/>
-        Next move: {this.state.redIsNext ? 'red' : 'yellow'}
       </div>
-    );
+    )
   }
 }
 

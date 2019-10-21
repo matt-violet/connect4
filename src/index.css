@@ -48,7 +48,6 @@ body {
 .gridCellRed, .gridCellYellow {
   animation-duration: 1s;
   animation-name: slidein;
-  animation-direction: alternate 
 }
 
 @keyframes slidein {

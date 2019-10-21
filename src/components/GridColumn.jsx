@@ -23,11 +23,6 @@ class GridColumn extends React.Component {
   }
 
   render() {
-    if (!this.state.cellIds) {
-      return (
-        <div>Loading...</div>
-      )
-    }
     return (
       <div className='gridCol'>
         {this.state.cellIds.map(cell => {
