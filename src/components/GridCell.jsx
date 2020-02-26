@@ -37,4 +37,3 @@ class GridCell extends React.Component {
 }
 
 export default GridCell;
-

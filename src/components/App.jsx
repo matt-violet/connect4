@@ -45,9 +45,11 @@ class App extends React.Component {
   }
 
   declareWinner() {
-    this.setState({
-      winner: true
-    })
+    setTimeout(() => {
+      this.setState({
+        winner: true
+      })
+    }, 1200)
   }
 
   createGrid() {
@@ -131,6 +133,8 @@ class App extends React.Component {
           gameStarted={this.state.gameStarted}
           callCheckForWinner={this.callCheckForWinner}
           redIsNext={this.state.redIsNext}
+          redPlayer={this.state.redPlayer}
+          yellowPlayer={this.state.yellowPlayer}
         />
       </div>
     )
@@ -138,4 +142,3 @@ class App extends React.Component {
 }
 
 export default App;
-

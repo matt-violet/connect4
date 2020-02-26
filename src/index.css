@@ -1,17 +1,47 @@
 body {
-  background-color: lightblue;
+  background: linear-gradient(135deg, lightgreen, rgb(0, 225, 255));
+  background-repeat: no-repeat;
+  text-align: center;
+  height: 100%;
+  background-attachment: fixed;
+  font-family: 'IBM Plex Sans', arial;
+}
+
+.sign-in-div {
+  width: 300px;
+  margin: 20px auto;
+  text-align: left;
+  padding: 40px;
+  background: hsl(0, 0%, 100%);
+  font-size: 14px;
+}
+
+.player-input {
+  margin: 10px 0 0 8px;
+}
+
+.btn {
+  font-size: 16px;
 }
 
 .title {
   padding: 30px 0px 0px 30px;
+  margin-top: 40px;
 }
 
 .grid {
   padding: 30px;
 }
 
+.next-move {
+  margin: auto;
+  width: 330px;
+  padding: 10px;
+}
+
 .gridCol {
   display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
 }
 
 .gridCol:hover {
@@ -21,26 +51,44 @@ body {
 .gridCellnoColor {
   background-color: cornflowerblue; 
   opacity: .85;
-  border: .5px solid black;
+  border: .25px solid black;
   width: 50px;
   height: 50px;
   display: block;
+  padding: 0;
 }
 
 .gridCellRed {
   background-color: red;
-  border: 2px solid black;
+  border: .25px solid black;
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  padding: 0;
 }
 
 .gridCellYellow {
   background-color: yellow;
-  border: 2px solid black;
+  border: .25px solid black;
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  padding: 0;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.red {
+  color: red;
+}
+
+.winning-screen {
+  background: white;
+  width: 300px;
+  padding: 40px;
+  margin: 100px auto;
 }
 
 /* ================== SLIDE ===================== */

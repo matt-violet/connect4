@@ -4,8 +4,8 @@ class SignInScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redPlayer: null,
-      yellowPlayer: null,
+      redPlayer: '',
+      yellowPlayer: '',
       submitted: false
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,29 +25,42 @@ class SignInScreen extends React.Component {
 
   render() {
     return (
-      <div>
-        Choose your side:
-        <br/>
-        <br/>
+      <div className='animatedParent'>
+        <div className='sign-in-div animated bounceIn'>
+        <h3>Choose your side</h3>
         <br/>
         <form onSubmit={this.handleSubmit}>
           <label>
             Red:
-            <br/>
-            <input placeholder='Enter player 1 name' value={this.state.redPlayer} name='redPlayer' onChange={this.handleChange} />
+            <input
+              className='player-input'
+              placeholder='Player 1'
+              value={this.state.redPlayer}
+              name='redPlayer'
+              onChange={this.handleChange}
+              />
           </label>
-          <br/>
           <br/>
           <label>
             Yellow:
-            <br/>
-            <input placeholder='Enter player 2 name' value={this.state.yellowPlayer} name='yellowPlayer' onChange={this.handleChange} />
+            <input
+              className='player-input'
+              placeholder='Player 2'
+              value={this.state.yellowPlayer}
+              name='yellowPlayer'
+              onChange={this.handleChange}
+              />
           </label>
           <br/>
           <br/>
           <br/>
-          <input type='submit' value='Start Game' />
+          <input
+            className='btn'
+            type='submit'
+            value='Start Game'
+            />
         </form>
+        </div>
       </div>
     )
   }

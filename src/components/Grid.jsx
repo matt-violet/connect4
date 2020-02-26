@@ -16,7 +16,7 @@ class Grid extends React.Component {
     }
   }
 
-  createColumns(){
+  createColumns() {
     let columnIds = [];
     for (let i = 0; i < 7; i++) {
       columnIds.push(i);
@@ -31,23 +31,29 @@ class Grid extends React.Component {
       )
     }
     return (
-      <div>
-        {this.state.columnIds.map(col => {
-          return <GridColumn 
+      <div className="animatedParent">
+        <div className="animated fadeInUp">
+          {this.state.columnIds.map(col => {
+            return <GridColumn
             colId={col} 
             key={col}
             makeMove={this.props.makeMove} 
             grid={this.props.grid}
             callCheckForWinner={this.props.callCheckForWinner}
-          />
-        })}
-        <br/>
-        <br/>
-        Next move: {this.props.redIsNext ? 'red' : 'yellow'}
+            />
+          })}
+          <br/>
+          <br/>
+          <div className="next-move">
+            Next move: 
+            <div className={this.props.redIsNext ? "red" : "yellow"}>
+              {this.props.redIsNext ? this.props.redPlayer : this.props.yellowPlayer}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
 export default Grid;
-

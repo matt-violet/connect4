@@ -21,10 +21,14 @@ class WinningScreen extends React.Component {
       )
     }
     return (
-      <div>   
-        <h1>{this.props.redIsNext ? this.props.yellowPlayer + ' wins!!!' : this.props.redPlayer + ' wins!!!'}</h1>
+      <div className='winning-screen animatedParent'>   
+        <h1 className='animated bounceIn'>
+          {this.props.redIsNext ?
+            this.props.yellowPlayer + ' wins!' :
+            this.props.redPlayer + ' wins!'}
+        </h1>
         <br/>
-        <button onClick={this.props.startOver}>
+        <button className='btn' onClick={this.props.startOver}>
           Rematch
         </button>
       </div>
