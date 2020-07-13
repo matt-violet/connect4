@@ -4,4 +4,4 @@ Game rules per Wikipedia: "Players first choose a color and then take turns drop
 
 Click the image below or visit my [portfolio website](https://matt-violet.github.io/) for a video demo.
 
-[![connect-four](https://user-images.githubusercontent.com/46619903/76367057-fb85b500-62e8-11ea-91a8-a81db732277a.png)](https://www.youtube.com/watch?v=AM0sI6ZqEQw&feature=emb_title)
+[![connect-four](https://user-images.githubusercontent.com/46619903/76367057-fb85b500-62e8-11ea-91a8-a81db732277a.png)](https://matt-violet.github.io/)
